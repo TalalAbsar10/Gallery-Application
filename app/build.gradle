@@ -41,22 +41,22 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.appcompat:appcompat:$appcompat"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
     testImplementation "androidx.test:core:$test_core"
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation "junit:junit:$junit"
 
     // Instrumentation tests
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation "androidx.test.ext:junit:$test_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core"
 
     implementation project(':gallery')
 
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
-    kapt 'com.github.bumptech.glide:compiler:4.13.0'
+    implementation "com.github.bumptech.glide:glide:$glide"
+    kapt "com.github.bumptech.glide:compiler:$glide_compiler"
 
     //Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
