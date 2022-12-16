@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Gallery" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge"/>
+
+    <!-- light default style -->
+    <style name="Gallery.Light">
+
+        <item name="colorPrimary">@color/gallery_light_color_primary</item>
+        <item name="colorPrimaryDark">@color/gallery_light_color_primary_dark</item>
+        <item name="colorAccent">@color/gallery_light_color_accent</item>
+
+        <item name="gallery_background_color">@color/gallery_light_background_color</item>
+        <item name="gallery_color_primary">@color/gallery_light_color_primary</item>
+        <item name="gallery_color_primary_dark">@color/gallery_light_color_primary_dark</item>
+        <item name="gallery_color_accent">@color/gallery_light_color_accent</item>
+        <item name="gallery_icon_tint_color">@color/gallery_light_icon_tint_color</item>
+        <item name="gallery_toolbar_icon_tint_color">@color/gallery_light_toolbar_icon_tint_color
+        </item>
+        <item name="gallery_primary_text_color">@color/gallery_light_primary_text_color</item>
+        <item name="gallery_secondary_text_color">@color/gallery_light_secondary_text_color</item>
+        <item name="gallery_hint_text_color">@color/gallery_light_hint_text_color</item>
+        <item name="gallery_place_holder_color">@color/gallery_light_place_holder_color</item>
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="gallery_toolbar_text_color">@color/gallery_light_toolbar_text_color</item>
+        <item name="android:windowBackground">@color/gallery_light_background_color</item>
+    </style>
+
+    <!-- dracula default style -->
+    <style name="Gallery.Dracula">
+
+        <item name="colorPrimary">@color/gallery_dracula_color_primary</item>
+        <item name="colorPrimaryDark">@color/gallery_dracula_color_primary_dark</item>
+        <item name="colorAccent">@color/gallery_dracula_color_accent</item>
+
+        <item name="gallery_background_color">@color/gallery_dracula_background_color</item>
+        <item name="gallery_color_primary">@color/gallery_dracula_color_primary</item>
+        <item name="gallery_color_primary_dark">@color/gallery_dracula_color_primary_dark</item>
+        <item name="gallery_color_accent">@color/gallery_dracula_color_accent</item>
+        <item name="gallery_icon_tint_color">@color/gallery_dracula_icon_tint_color</item>
+        <item name="gallery_toolbar_icon_tint_color">@color/gallery_dracula_toolbar_icon_tint_color
+        </item>
+        <item name="gallery_primary_text_color">@color/gallery_dracula_primary_text_color</item>
+        <item name="gallery_secondary_text_color">@color/gallery_dracula_secondary_text_color</item>
+        <item name="gallery_hint_text_color">@color/gallery_dracula_hint_text_color</item>
+        <item name="gallery_place_holder_color">@color/gallery_dracula_place_holder_color</item>
+        <item name="gallery_toolbar_text_color">@color/gallery_dracula_toolbar_text_color</item>
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="android:windowBackground">@color/gallery_dracula_background_color</item>
+
+    </style>
+
+    <style name="toolbarTitleTextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/gallery_primary_text_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">?attr/gallery_toolbar_icon_tint_color</item>
+        <item name="android:textColorPrimary">?attr/gallery_toolbar_text_color</item>
+        <item name="colorControlHighlight">#d8d8d8</item>
+    </style>
+
+    <style name="AppTheme.Dark.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+        <item name="android:colorBackground">?attr/gallery_background_color</item>
+        <item name="android:textColor">?attr/gallery_primary_text_color</item>
+    </style>
+
+    <style name="Gallery_AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:colorAccent" tools:targetApi="lollipop">?attr/gallery_color_accent</item>
+        <item name="colorPrimary">?attr/gallery_color_primary</item>
+        <item name="colorPrimaryDark">?attr/gallery_color_primary_dark</item>
+        <item name="android:textColorPrimary">?attr/gallery_primary_text_color</item>
+        <item name="android:textColorAlertDialogListItem">?attr/gallery_primary_text_color</item>
+        <item name="textColorAlertDialogListItem">?attr/gallery_primary_text_color</item>
+        <item name="android:textColor">?attr/gallery_primary_text_color</item>
+        <item name="android:background">?attr/gallery_background_color</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">?attr/gallery_toolbar_icon_tint_color</item>
+    </style>
+
+</resources>

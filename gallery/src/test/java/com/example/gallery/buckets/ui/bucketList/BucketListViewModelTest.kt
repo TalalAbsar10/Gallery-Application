@@ -1,0 +1,89 @@
+package com.example.gallery.buckets.ui.bucketList
+
+import android.util.Log
+import io.mockk.*
+import com.example.gallery.buckets.bucketList.BucketListViewModel
+import com.example.gallery.buckets.bucketList.LoadingViewState
+import com.example.gallery.models.BucketType
+import com.example.gallery.models.MediaBucket
+import com.example.gallery.repo.AbstractMediaBucketProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.*
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+
+@OptIn(ExperimentalCoroutinesApi::class)
+internal class BucketListViewModelTest {
+
+    private val abstractMediaBucketProvider by lazy { mockk<AbstractMediaBucketProvider>() }
+
+    private val bucketViewModel by lazy {
+        spyk(
+            BucketListViewModel(
+                false,
+                abstractMediaBucketProvider,
+                BucketType.VIDEO_PHOTO_BUCKETS,
+                testCoroutineDispatcher,
+                mockk(relaxed = true)
+            )
+        )
+    }
+
+    private val mockViewStateCollector by lazy { spyk<FlowCollector<LoadingViewState?>>() }
+    private val bucketsMutableStateFlowCollector by lazy { spyk<FlowCollector<List<MediaBucket>>>() }
+    private val allMediaCountChangedStateFlowCollector by lazy { spyk<FlowCollector<Int>>() }
+
+    private val testCoroutineDispatcher = Dispatchers.Unconfined
+    private val testCoroutineScope by lazy { TestScope() }
+
+    @BeforeEach
+    fun before() {
+        Dispatchers.setMain(testCoroutineDispatcher)
+        mockkStatic(Log::class)
+        every { Log.e(any(), any()) } returns 0
+    }
+
+    @Test
+    fun `Given refresh=true - when app has not access to external storage - then notify showLoading-hideLoading-ErrorInFetchingBuckets`() = runBlockingTest {
+        every { bucketViewModel.bucketsStateFlow.value } returns generateBucketsList()
+        testCoroutineScope.launch { bucketViewModel.loadingViewStateFlow.collect(mockViewStateCollector) }
+        coEvery { abstractMediaBucketProvider.getMediaBuckets(any()) } throws SecurityException("cant access to external storage")
+        bucketViewModel.getBuckets(refresh = false)
+        coVerify(exactly = 1) { mockViewStateCollector.emit(LoadingViewState.ShowLoading) }
+        coVerify(exactly = 1) { mockViewStateCollector.emit(LoadingViewState.HideLoading) }
+        coVerify(exactly = 1) { mockViewStateCollector.emit(LoadingViewState.Error) }
+    }
+
+    @Test
+    fun `Given refresh=false - when bucket lists is empty - then get bucket lists`() = runBlockingTest {
+        val generatedList = generateBucketsList()
+        testCoroutineScope.launch { bucketViewModel.loadingViewStateFlow.collect(mockViewStateCollector) }
+        testCoroutineScope.launch { bucketViewModel.bucketsStateFlow.collect(bucketsMutableStateFlowCollector) }
+        testCoroutineScope.launch { bucketViewModel.allMediaCountChanged.collect(allMediaCountChangedStateFlowCollector) }
+        coEvery { abstractMediaBucketProvider.getMediaBuckets(any()) } returns generatedList
+        bucketViewModel.getBuckets(refresh = false)
+        coVerify(exactly = 1) { mockViewStateCollector.emit(LoadingViewState.ShowLoading) }
+        coVerify(exactly = 1) { mockViewStateCollector.emit(LoadingViewState.HideLoading) }
+        coVerify(exactly = 1) { bucketsMutableStateFlowCollector.emit(generatedList) }
+        coVerify(exactly = 1) { allMediaCountChangedStateFlowCollector.emit(generatedList[0].mediaCount) }
+    }
+
+    @AfterEach
+    fun after() {
+        Dispatchers.resetMain()
+    }
+
+    private fun generateBucketsList(): List<MediaBucket> = mutableListOf<MediaBucket>().apply {
+        repeat(20) {
+            add(
+                MediaBucket(it.toLong(), "storage/$it/emulated/x", "Batman Folder $it", "batman.jpg", (it + 1) * 100)
+            )
+        }
+
+        add(0, this[0].copy(displayName = "All Medias", mediaCount = this.sumOf { it.mediaCount }))
+    }
+}

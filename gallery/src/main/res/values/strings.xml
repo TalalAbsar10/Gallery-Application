@@ -1,0 +1,20 @@
+<resources>
+    <string name="gallery_toolbar_title">Gallery</string>
+    <string name="gallery_caption_hint_text">Caption…</string>
+    <string name="media_count">%1$d medias</string>
+    <string name="camera">Camera</string>
+    <string name="list_mode">List mode</string>
+    <string name="access_external_storage_denied">Require storage permission in order to choosing photo or video</string>
+    <string name="access_external_storage_permanently_denied">Storage permission has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Storage\".</string>
+    <string name="continue_button">Continue</string>
+    <string name="exit_button">Exit</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="of">of</string>
+    <string name="selected_media">selected</string>
+    <string name="camera_not_found">Please install camera app first</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="no_video_player_found">No media player found on device</string>
+    <string name="gallery_error_max_selectable">You can only choose %1$d Media</string>
+    <string name="retry">Retry again</string>
+    <string name="shared_storage_denied_text">App has not access to shared storage</string>
+</resources>

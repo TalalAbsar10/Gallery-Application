@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <attr format="color" name="gallery_background_color"/>
+    <attr format="color" name="gallery_color_accent"/>
+    <attr format="color" name="gallery_color_primary"/>
+    <attr format="color" name="gallery_color_primary_dark"/>
+    <attr format="reference" name="gallery_font_family"/>
+    <attr format="color" name="gallery_hint_text_color"/>
+    <attr format="color" name="gallery_icon_tint_color"/>
+    <attr format="color" name="gallery_place_holder_color"/>
+    <attr format="color" name="gallery_primary_text_color"/>
+    <attr format="color" name="gallery_secondary_text_color"/>
+    <attr format="color" name="gallery_toolbar_icon_tint_color"/>
+    <attr format="color" name="gallery_toolbar_text_color"/>
+    <color name="gallery_black">#000000</color>
+    <color name="gallery_dracula_background_color">#151e27</color>
+    <color name="gallery_dracula_color_accent">#5ea3de</color>
+    <color name="gallery_dracula_color_primary">#212d3b</color>
+    <color name="gallery_dracula_color_primary_dark">#151e27</color>
+    <color name="gallery_dracula_hint_text_color">#697686</color>
+    <color name="gallery_dracula_icon_tint_color">#7a8694</color>
+    <color name="gallery_dracula_place_holder_color">#1d2733</color>
+    <color name="gallery_dracula_primary_text_color">#ffffff</color>
+    <color name="gallery_dracula_secondary_text_color">#7c8896</color>
+    <color name="gallery_dracula_toolbar_icon_tint_color">#ffffff</color>
+    <color name="gallery_dracula_toolbar_text_color">#FFFFFF</color>
+    <color name="gallery_light_background_color">#ffffff</color>
+    <color name="gallery_light_color_accent">#A11183</color>
+    <color name="gallery_light_color_primary">#ffffff</color>
+    <color name="gallery_light_color_primary_dark">#CFD8DC</color>
+    <color name="gallery_light_hint_text_color">#999999</color>
+    <color name="gallery_light_icon_tint_color">#504f4f</color>
+    <color name="gallery_light_place_holder_color">#EEEEEE</color>
+    <color name="gallery_light_primary_text_color">#000000</color>
+    <color name="gallery_light_secondary_text_color">#999999</color>
+    <color name="gallery_light_toolbar_icon_tint_color">#504f4f</color>
+    <color name="gallery_light_toolbar_text_color">#000000</color>
+    <dimen name="caption_layout_height">45dp</dimen>
+    <dimen name="gallery_bucket_max_width">140dp</dimen>
+    <dimen name="min_size_bucket_content_item">120dp</dimen>
+    <dimen name="recycler_view_bottom_padding">60dp</dimen>
+    <item name="bucketListMenuItemCamera" type="id"/>
+    <item name="bucketListMenuItemShowRecyclerViewItemModelChanger" type="id"/>
+    <item name="galleryEditTextCaption" type="id"/>
+    <string name="access_external_storage_denied">Require storage permission in order to choosing photo or video</string>
+    <string name="access_external_storage_permanently_denied">Storage permission has been permanently denied. Please continue to the app settings menu, select \"Permissions\", and enable \"Storage\".</string>
+    <string name="camera">Camera</string>
+    <string name="camera_not_found">Please install camera app first</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="continue_button">Continue</string>
+    <string name="exit_button">Exit</string>
+    <string name="gallery_caption_hint_text">Caption…</string>
+    <string name="gallery_error_max_selectable">You can only choose %1$d Media</string>
+    <string name="gallery_toolbar_title">Gallery</string>
+    <string name="list_mode">List mode</string>
+    <string name="media_count">%1$d medias</string>
+    <string name="no_video_player_found">No media player found on device</string>
+    <string name="of">of</string>
+    <string name="retry">Retry again</string>
+    <string name="selected_media">selected</string>
+    <string name="shared_storage_denied_text">App has not access to shared storage</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <style name="AppTheme.Dark.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">?attr/gallery_background_color</item>
+        <item name="android:textColor">?attr/gallery_primary_text_color</item>
+    </style>
+    <style name="Gallery" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge"/>
+    <style name="Gallery.Dracula">
+
+        <item name="colorPrimary">@color/gallery_dracula_color_primary</item>
+        <item name="colorPrimaryDark">@color/gallery_dracula_color_primary_dark</item>
+        <item name="colorAccent">@color/gallery_dracula_color_accent</item>
+
+        <item name="gallery_background_color">@color/gallery_dracula_background_color</item>
+        <item name="gallery_color_primary">@color/gallery_dracula_color_primary</item>
+        <item name="gallery_color_primary_dark">@color/gallery_dracula_color_primary_dark</item>
+        <item name="gallery_color_accent">@color/gallery_dracula_color_accent</item>
+        <item name="gallery_icon_tint_color">@color/gallery_dracula_icon_tint_color</item>
+        <item name="gallery_toolbar_icon_tint_color">@color/gallery_dracula_toolbar_icon_tint_color
+        </item>
+        <item name="gallery_primary_text_color">@color/gallery_dracula_primary_text_color</item>
+        <item name="gallery_secondary_text_color">@color/gallery_dracula_secondary_text_color</item>
+        <item name="gallery_hint_text_color">@color/gallery_dracula_hint_text_color</item>
+        <item name="gallery_place_holder_color">@color/gallery_dracula_place_holder_color</item>
+        <item name="gallery_toolbar_text_color">@color/gallery_dracula_toolbar_text_color</item>
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="android:windowBackground">@color/gallery_dracula_background_color</item>
+
+    </style>
+    <style name="Gallery.Light">
+
+        <item name="colorPrimary">@color/gallery_light_color_primary</item>
+        <item name="colorPrimaryDark">@color/gallery_light_color_primary_dark</item>
+        <item name="colorAccent">@color/gallery_light_color_accent</item>
+
+        <item name="gallery_background_color">@color/gallery_light_background_color</item>
+        <item name="gallery_color_primary">@color/gallery_light_color_primary</item>
+        <item name="gallery_color_primary_dark">@color/gallery_light_color_primary_dark</item>
+        <item name="gallery_color_accent">@color/gallery_light_color_accent</item>
+        <item name="gallery_icon_tint_color">@color/gallery_light_icon_tint_color</item>
+        <item name="gallery_toolbar_icon_tint_color">@color/gallery_light_toolbar_icon_tint_color
+        </item>
+        <item name="gallery_primary_text_color">@color/gallery_light_primary_text_color</item>
+        <item name="gallery_secondary_text_color">@color/gallery_light_secondary_text_color</item>
+        <item name="gallery_hint_text_color">@color/gallery_light_hint_text_color</item>
+        <item name="gallery_place_holder_color">@color/gallery_light_place_holder_color</item>
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="gallery_toolbar_text_color">@color/gallery_light_toolbar_text_color</item>
+        <item name="android:windowBackground">@color/gallery_light_background_color</item>
+    </style>
+    <style name="Gallery_AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:colorAccent" ns1:targetApi="lollipop">?attr/gallery_color_accent</item>
+        <item name="colorPrimary">?attr/gallery_color_primary</item>
+        <item name="colorPrimaryDark">?attr/gallery_color_primary_dark</item>
+        <item name="android:textColorPrimary">?attr/gallery_primary_text_color</item>
+        <item name="android:textColorAlertDialogListItem">?attr/gallery_primary_text_color</item>
+        <item name="textColorAlertDialogListItem">?attr/gallery_primary_text_color</item>
+        <item name="android:textColor">?attr/gallery_primary_text_color</item>
+        <item name="android:background">?attr/gallery_background_color</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">?attr/colorAccent</item>
+    </style>
+    <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">?attr/gallery_toolbar_icon_tint_color</item>
+    </style>
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">?attr/gallery_toolbar_icon_tint_color</item>
+        <item name="android:textColorPrimary">?attr/gallery_toolbar_text_color</item>
+        <item name="colorControlHighlight">#d8d8d8</item>
+    </style>
+    <style name="toolbarTitleTextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/gallery_primary_text_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

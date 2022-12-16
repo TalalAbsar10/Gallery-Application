@@ -1,0 +1,32 @@
+package com.example.gallery.utils
+
+import android.util.Log
+import androidx.fragment.app.FragmentActivity
+import java.lang.ref.WeakReference
+
+internal abstract class AbstractFeatureComponentHolder<T> {
+
+    private var component: T? = null
+    private var activity: WeakReference<FragmentActivity>? = null
+
+    fun createOrGetComponent(activity: FragmentActivity): T {
+        if (this.component == null) component = componentCreator(activity).also {
+            this.activity = WeakReference(activity)
+        }
+
+        return component!!
+    }
+
+    abstract fun componentCreator(activity: FragmentActivity): T
+
+    open fun onDestroy() {
+        try {
+            Log.d(GALLERY_LOG_TAG, "${this::class.simpleName} has been destroyed")
+            this.component = null
+        } catch (ignored: Throwable) {
+            ignored.printStackTrace()
+        }
+    }
+
+    fun getOrNull(): T? = this.component
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="gallery_background_color" format="color" />
+    <attr name="gallery_color_primary" format="color" />
+    <attr name="gallery_color_primary_dark" format="color" />
+    <attr name="gallery_color_accent" format="color" />
+    <attr name="gallery_icon_tint_color" format="color" />
+    <attr name="gallery_toolbar_icon_tint_color" format="color" />
+    <attr name="gallery_font_family" format="reference" />
+    <attr name="gallery_primary_text_color" format="color" />
+    <attr name="gallery_secondary_text_color" format="color" />
+    <attr name="gallery_hint_text_color" format="color" />
+    <attr name="gallery_place_holder_color" format="color" />
+    <attr name="gallery_toolbar_text_color" format="color" />
+
+
+</resources>

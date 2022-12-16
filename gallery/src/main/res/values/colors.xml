@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- dracula theme colors -->
+    <color name="gallery_dracula_background_color">#151e27</color>
+    <color name="gallery_dracula_color_primary">#212d3b</color>
+    <color name="gallery_dracula_color_primary_dark">#151e27</color>
+    <color name="gallery_dracula_color_accent">#5ea3de</color>
+    <color name="gallery_dracula_icon_tint_color">#7a8694</color>
+    <color name="gallery_dracula_toolbar_icon_tint_color">#ffffff</color>
+    <color name="gallery_dracula_primary_text_color">#ffffff</color>
+    <color name="gallery_dracula_secondary_text_color">#7c8896</color>
+    <color name="gallery_dracula_hint_text_color">#697686</color>
+    <color name="gallery_dracula_place_holder_color">#1d2733</color>
+    <color name="gallery_dracula_toolbar_text_color">#FFFFFF</color>
+
+    <!-- light theme colors -->
+    <color name="gallery_light_background_color">#ffffff</color>
+    <color name="gallery_light_color_primary">#ffffff</color>
+    <color name="gallery_light_color_primary_dark">#CFD8DC</color>
+    <color name="gallery_light_color_accent">#A11183</color>
+    <color name="gallery_light_icon_tint_color">#504f4f</color>
+    <color name="gallery_light_toolbar_icon_tint_color">#504f4f</color>
+    <color name="gallery_light_primary_text_color">#000000</color>
+    <color name="gallery_light_secondary_text_color">#999999</color>
+    <color name="gallery_light_hint_text_color">#999999</color>
+    <color name="gallery_light_place_holder_color">#EEEEEE</color>
+    <color name="gallery_light_toolbar_text_color">#000000</color>
+
+
+    <color name="gallery_black">#000000</color>
+</resources>

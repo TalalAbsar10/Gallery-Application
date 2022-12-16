@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutBucketItemView"
+    android:background="?selectableItemBackground">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewBucketImage"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextViewBucketItemCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textColor="?attr/gallery_secondary_text_color"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewBucketImage"
+        app:layout_constraintEnd_toStartOf="@+id/appCompatImageButtonArrowNext"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBucketImage"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextViewBucketName"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="715 medias" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextViewBucketName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:singleLine="true"
+        android:textColor="?attr/gallery_primary_text_color"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/appCompatTextViewBucketItemCount"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBucketImage"
+        app:layout_constraintTop_toTopOf="@+id/imageViewBucketImage"
+        app:layout_constraintVertical_bias="0.26999998"
+        tools:ignore="RtlSymmetry"
+        tools:text="Cameras" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/appCompatImageButtonArrowNext"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="#00ffffff"
+        android:src="@drawable/ic_arrow_next"
+        android:tint="?attr/gallery_icon_tint_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

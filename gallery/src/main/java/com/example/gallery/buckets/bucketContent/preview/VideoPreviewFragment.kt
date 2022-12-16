@@ -1,0 +1,132 @@
+package com.example.gallery.buckets.bucketContent.preview
+
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.media.MediaMetadataRetriever
+import android.net.Uri
+import android.os.Bundle
+import android.util.DisplayMetrics
+import android.util.Log
+import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.example.gallery.R
+import com.example.gallery.imageLoader.PhotoDiminution
+import com.example.gallery.main.di.GalleryActivityComponentHolder
+import com.example.gallery.models.Media
+import com.example.gallery.utils.*
+import kotlinx.android.synthetic.main.fragment_video_preview.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+internal class VideoPreviewFragment : AbstractMediaPreviewFragment(R.layout.fragment_video_preview) {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (arguments?.getParcelable<Media.Video>("video"))?.also { video ->
+            frameLayoutVideoPreviewRootLayout.setOnClickListener(onMediaPreviewClickListener)
+            loadVideoThumbnail(video)
+        }
+    }
+
+    private fun loadVideoThumbnail(video: Media.Video) {
+        setupVideoToggleOnClickListener(video)
+        MediaMetadataRetriever().autoClose { videoMetadataRetriever ->
+            var videoOriginalSize = PhotoDiminution(0, 0)
+            try {
+                videoMetadataRetriever.setDataSource(video.path)
+                videoOriginalSize = videoMetadataRetriever.getVideoSize()
+            } catch (t: Throwable) {
+                Log.e(GALLERY_LOG_TAG, "cant load video size from video path")
+            }
+
+            val displayMetrics = requireActivity().resources.displayMetrics
+            lifecycleScope.launch(Dispatchers.IO) {
+                try {
+                    createThumbForVideosOrEmpty(
+                        videosPath = listOf(video.path to video.id),
+                        cacheDir = GalleryActivityComponentHolder.getOrNull()!!.provideCacheDir().cacheDir,
+                        highQuality = true to PhotoDiminution(
+                            if (videoOriginalSize.widthIsNotSet()) displayMetrics.widthPixels else videoOriginalSize.width,
+                            if (videoOriginalSize.heightIsNotSet()) video.thumbnail.height else videoOriginalSize.height
+                        )
+                    ).also {
+                        launch(Dispatchers.Main) {
+                            if (it.isEmpty() || it.firstOrNull()?.isEmpty() == true)
+                                showDefaultThumbnail(displayMetrics, video.thumbnail.path)
+                            else
+                                showVideoThumbnail(it, displayMetrics, videoOriginalSize)
+                        }
+                    }
+                } catch (ignored: Throwable) {
+                    showDefaultThumbnail(displayMetrics, video.thumbnail.path)
+                }
+            }
+        }
+    }
+
+    private fun setupVideoToggleOnClickListener(video: Media.Video) {
+        appCompatImageViewPlayVideo.setOnClickListener {
+            GalleryActivityComponentHolder.getOrNull()?.provideGalleryOptions()?.onVideoPlayClick.also {
+                if (it == null) {
+                    Intent(Intent.ACTION_VIEW, Uri.parse(video.path)).apply {
+                        setDataAndType(Uri.parse(video.path), "video/*")
+                        if (this.resolveActivity(requireContext().packageManager!!) != null) {
+                            try {
+                                requireContext().startActivity(this)
+                            } catch (t: ActivityNotFoundException) {
+                                Toast.makeText(requireContext(), R.string.no_video_player_found, Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                } else {
+                    it.invoke(video.path)
+                }
+            }
+        }
+    }
+
+    private fun showDefaultThumbnail(displayMetrics: DisplayMetrics, thumbnailPath: String) {
+        GalleryActivityComponentHolder.createOrGetComponent(requireActivity()).provideImageLoader()
+            .loadPhoto(
+                requireContext(),
+                appCompatImageViewVideoThumbnail,
+                PhotoDiminution(displayMetrics.widthPixels, displayMetrics.widthPixels / 2),
+                R.color.gallery_black,
+                thumbnailPath
+            )
+    }
+
+    private fun showVideoThumbnail(
+        thumbList: List<String>,
+        displayMetrics: DisplayMetrics,
+        videoOriginalSize: PhotoDiminution
+    ) {
+        GalleryActivityComponentHolder.createOrGetComponent(requireActivity()).provideImageLoader()
+            .loadPhoto(
+                context = requireContext(),
+                imageView = appCompatImageViewVideoThumbnail,
+                resizeDiminution = PhotoDiminution(
+                    width = displayMetrics.widthPixels,
+                    height = if (videoOriginalSize.heightIsNotSet()) displayMetrics.heightPixels / 2 else getHeightBasedOnScaledWidth(
+                        originalWidth = videoOriginalSize.width,
+                        originalHeight = videoOriginalSize.height,
+                        scaledWidth = displayMetrics.widthPixels
+                    )
+                ),
+                placeHolderColor = R.color.gallery_black,
+                path = thumbList.first()
+            )
+    }
+
+    override fun onDestroyView() {
+        try {
+            frameLayoutVideoPreviewRootLayout.setOnClickListener(null)
+            appCompatImageViewPlayVideo.setOnClickListener(null)
+            onMediaPreviewClickListener = null
+        } catch (ignored: Throwable) {
+            ignored.printStackTrace()
+        }
+        super.onDestroyView()
+    }
+}

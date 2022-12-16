@@ -1,0 +1,57 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.gallery" >
+4
+5    <uses-sdk
+6        android:minSdkVersion="14"
+6-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml
+7        android:targetSdkVersion="32" />
+7-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml
+8
+9    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+9-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:5:5-80
+9-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:5:22-77
+10    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+10-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:6:5-81
+10-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:6:22-78
+11    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+11-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:7:5-82
+11-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:7:22-79
+12
+13    <queries>
+13-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:9:5-18:15
+14        <intent>
+14-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:10:9-12:18
+15            <action android:name="android.media.action.IMAGE_CAPTURE" />
+15-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:11:13-73
+15-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:11:21-70
+16        </intent>
+17        <intent>
+17-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:14:9-17:18
+18            <action android:name="android.intent.action.VIEW" />
+18-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:15:13-65
+18-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:15:21-62
+19
+20            <data android:mimeType="video/*" />
+20-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:16:13-48
+20-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:16:19-45
+21        </intent>
+22    </queries>
+23
+24    <application
+24-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:20:5-27:19
+25        android:requestLegacyExternalStorage="true"
+25-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:21:9-52
+26        android:supportsRtl="true" >
+26-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:22:9-35
+27        <activity
+27-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:23:9-26:52
+28            android:name="com.example.gallery.main.ui.GalleryActivity"
+28-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:25:13-52
+29            android:theme="@style/Gallery.Light"
+29-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:26:13-49
+30            android:windowSoftInputMode="adjustResize" />
+30-->D:\My Work\AndroidStudioProjects\Avrioc Gallery App\GalleryApp\gallery\src\main\AndroidManifest.xml:24:13-55
+31    </application>
+32
+33</manifest>
